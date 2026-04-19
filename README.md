@@ -84,17 +84,44 @@ Concepts:
 
 ---
 
-## Build Instructions
+## Build & Run Instructions
 
 ### Prerequisites
 
 - Java 1.8
 - Maven 3.6.3
-- IntelliJ IDEA (recommended)
 
 ### Build Commands
+
+To build the project from source, navigate to the project root and run:
 
 ```bash
 mvn clean install
 mvn clean compile assembly:single
 ```
+
+This will generate an executable fat JAR in the `target/` directory containing all dependencies.
+
+### Running the System
+
+You can run the system using the pre-compiled JAR files in the `executables/` directory or the JAR you just built.
+
+**To run the Server (which acts as part of the distributed system):**
+
+```bash
+java -jar executables/server.jar
+```
+
+_Alternatively, from your Maven build:_
+
+```bash
+java -cp target/Distributed-Chat-System-1.0-SNAPSHOT-jar-with-dependencies.jar server.Main
+```
+
+**To run the Client:**
+
+```bash
+java -jar executables/client.jar
+```
+
+_(Open multiple terminal windows running the client to simulate multiple chat users talking to each other across the distributed system)._
